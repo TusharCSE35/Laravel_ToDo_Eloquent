@@ -6,8 +6,19 @@
     <title>Login</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .login-link {
+            color: #007bff; 
+            text-decoration: none; 
+        }
+
+        .login-link:hover {
+            color: #0056b3; 
+            text-decoration: underline; 
+        }
+    </style>
 </head>
-<body>
+<body class="bg-secondary">
 
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card" style="width: 400px;">
@@ -19,7 +30,7 @@
                     @csrf
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
-                        <input type="email" name="email" class="form-control" id="email" value="{{ old('email') }}" required>
+                        <input type="email" name="email" class="form-control" id="email" value="{{ old('email') }}" placeholder="Enter your email" required>
                         @error('email')
                             <div class="text-danger mt-2">{{ $message }}</div>
                         @enderror
@@ -27,7 +38,7 @@
                     
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" id="password" required>
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password" required>
                         @error('password')
                             <div class="text-danger mt-2">{{ $message }}</div>
                         @enderror
@@ -39,7 +50,7 @@
                 </form>
             </div>
             <div class="card-footer text-center">
-                <a href="{{ route('register') }}">Don't have an account? Register here</a>
+                <span>Already have an account? <a href="{{ route('register') }}" class="login-link ">Registration</a></span>
             </div>
         </div>
     </div>

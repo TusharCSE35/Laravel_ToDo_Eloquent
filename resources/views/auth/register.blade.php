@@ -6,8 +6,19 @@
     <title>Register</title>
    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .login-link {
+            color: #007bff; 
+            text-decoration: none; 
+        }
+
+        .login-link:hover {
+            color: #0056b3; 
+            text-decoration: underline; 
+        }
+    </style>
 </head>
-<body>
+<body class="bg-secondary">
 
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card" style="width: 400px;">
@@ -19,7 +30,7 @@
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" name="name" class="form-control" id="name" value="{{ old('name') }}" required>
+                        <input type="text" name="name" class="form-control" id="name" value="{{ old('name') }}" placeholder="Enter your name" required>
                         @error('name')
                             <div class="text-danger mt-2">{{ $message }}</div>
                         @enderror
@@ -27,7 +38,7 @@
                     
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
-                        <input type="email" name="email" class="form-control" id="email" value="{{ old('email') }}" required>
+                        <input type="email" name="email" class="form-control" id="email" value="{{ old('email') }}" placeholder="Enter your email" required>
                         @error('email')
                             <div class="text-danger mt-2">{{ $message }}</div>
                         @enderror
@@ -35,7 +46,7 @@
                     
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" id="password" required>
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password" required>
                         @error('password')
                             <div class="text-danger mt-2">{{ $message }}</div>
                         @enderror
@@ -43,7 +54,7 @@
                     
                     <div class="mb-3">
                         <label for="password_confirmation" class="form-label">Confirm Password</label>
-                        <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" required>
+                        <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" placeholder="Enter your confirm password" required>
                         @error('password_confirmation')
                             <div class="text-danger mt-2">{{ $message }}</div>
                         @enderror
@@ -55,7 +66,7 @@
                 </form>
             </div>
             <div class="card-footer text-center">
-                <a href="{{ route('login') }}">Already have an account? Login here</a>
+                <span>Already have an account? <a href="{{ route('login') }}" class="login-link ">Login</a></span>
             </div>
         </div>
     </div>

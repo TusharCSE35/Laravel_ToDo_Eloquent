@@ -12,7 +12,7 @@
     <style>
         .sidebar {
             height: 100vh;
-            background-color: rgb(143, 144, 146);
+            background-color: rgb(188, 190, 192);
             padding-top: 20px;
         }
 
@@ -28,16 +28,16 @@
         }
 
         .profile-image {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 10px;
         }
 
         .profile-icon {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             background-color: #ccc;
             display: flex;
@@ -97,21 +97,21 @@
         <div class="row">
             <!-- Sidebar -->
             <div class="col-md-3 sidebar">
-                <h4 class="text-center">Profile</h4>
+                <h3 class="text-center">Profile</h3>
                 <div class="text-left mb-3">
                     @if(auth()->user()->profile_image)
-                    <img src="{{ asset('storage/' . auth()->user()->profile_image) }}" alt="Profile Image" class="profile-image">
+                        <img src="{{ asset('storage/' . auth()->user()->profile_image) }}" alt="Profile Image" class="profile-image">
                     @else
-                    <div class="profile-icon">
-                        <i class="bi bi-person"></i>
-                    </div>
+                        <div class="profile-icon">
+                            <i class="bi bi-person"></i>
+                        </div>
                     @endif
                     <h5>{{ auth()->user()->name }}</h5>
                     <p>{{ auth()->user()->email }}</p>
-                    <p><small>Account created on: {{ auth()->user()->created_at->format('M d, Y') }}</small></p>
+                    <p><small>On: {{ auth()->user()->created_at->format('M d, Y') }}</small></p>
                 </div>
                 <a href="{{ url('settings') }}">Settings</a>
-                <a href="{{ url('logout') }}" class="text-danger">Logout</a>
+                <a href="{{ url('logout') }}" class="text-danger" onclick="return confirm('Are you sure you want to Logut?');">Logout</a>
             </div>
 
             <!-- Main content -->

@@ -9,7 +9,7 @@
     <style>
         .sidebar {
             height: 100vh;
-            background-color:rgb(143, 144, 146);
+            background-color:rgb(188, 190, 192);
             padding-top: 20px;
         }
         .sidebar a {
@@ -23,16 +23,16 @@
         }
 
         .profile-image {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 10px;
         }
 
         .profile-icon {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             background-color: #ccc;
             display: flex;
@@ -61,7 +61,7 @@
                     <p><small>Account created on: {{ auth()->user()->created_at->format('M d, Y') }}</small></p>
                 </div>
                 <a href="{{ url('settings') }}">Settings</a>
-                <a href="{{ url('logout') }}" class="text-danger">Logout</a>
+                <a href="{{ url('logout') }}" class="text-danger" onclick="return confirm('Are you sure you want to Logout?');">Logout</a>
             </div>
 
             <!-- Main content -->
