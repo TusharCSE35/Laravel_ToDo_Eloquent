@@ -72,7 +72,7 @@
                 <div class="sidebar-links">
                     <a href="{{ url('settings') }}">Settings</a>
                     
-                    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                    <form action="{{ route('logout') }}" method="GET" style="display: inline;">
                         @csrf
                         <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to Logout?');">Logout</button>
                     </form>
