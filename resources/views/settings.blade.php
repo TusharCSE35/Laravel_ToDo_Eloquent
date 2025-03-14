@@ -9,8 +9,11 @@
     <style>
         .sidebar {
             height: 100vh;
-            background-color:rgb(188, 190, 192);
+            background-color: rgb(188, 190, 192);
             padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; 
         }
         .sidebar a {
             color: #000;
@@ -41,13 +44,18 @@
             color: white;
             font-size: 30px;
         }
+
+        .sidebar-links {
+            margin-top: auto; 
+            margin-bottom: 50px;
+        }
     </style>
 </head>
 <body>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3 sidebar">
-                <h4 class="text-center">Profile</h4>
+                <h3 class="text-center">Profile</h3>
                 <div class="text-left mb-3">
                     @if(auth()->user()->profile_image)
                         <img src="{{ asset('storage/' . auth()->user()->profile_image) }}" alt="Profile Image" class="profile-image">
@@ -58,10 +66,17 @@
                     @endif
                     <h5>{{ auth()->user()->name }}</h5>
                     <p>{{ auth()->user()->email }}</p>
-                    <p><small>Account created on: {{ auth()->user()->created_at->format('M d, Y') }}</small></p>
+                    <p><small>On: {{ auth()->user()->created_at->format('M d, Y') }}</small></p>
                 </div>
-                <a href="{{ url('settings') }}">Settings</a>
-                <a href="{{ url('logout') }}" class="text-danger" onclick="return confirm('Are you sure you want to Logout?');">Logout</a>
+
+                <div class="sidebar-links">
+                    <a href="{{ url('settings') }}">Settings</a>
+                    
+                    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                        @csrf
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to Logout?');">Logout</button>
+                    </form>
+                </div>
             </div>
 
             <!-- Main content -->
